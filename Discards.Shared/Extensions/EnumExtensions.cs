@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace Discards.BlackRed.Service.Models
+namespace Discards.Shared.Extensions
 {
 	public static class EnumExtensions
 	{
@@ -21,20 +21,13 @@ namespace Discards.BlackRed.Service.Models
 		{
 			var isSuccess = Enum.TryParse(stringValue, true, out T val);
 
-			if (isSuccess)
-			{
-				return val;
-			}
+			if (isSuccess) return val;
 
 			var enumValues = Enum.GetValues(typeof(T));
 
 			foreach (var v in enumValues)
-			{
 				if (v is Enum e && string.Equals(e.GetDescription(), stringValue, StringComparison.OrdinalIgnoreCase))
-				{
 					return ConvertToEnum<T>(e.ToString());
-				}
-			}
 
 			return null;
 		}

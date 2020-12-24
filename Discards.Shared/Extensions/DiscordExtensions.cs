@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Discord.WebSocket;
 
-namespace Discards.ConsoleUI.Services
+namespace Discards.Shared.Extensions
 {
 	public static class DiscordExtensions
 	{

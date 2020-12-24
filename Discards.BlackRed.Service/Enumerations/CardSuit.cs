@@ -4,13 +4,9 @@ namespace Discards.BlackRed.Service.Models
 {
 	public enum CardSuit
 	{
-		[Description("BLACK")]
-		SPADE,
-		[Description("BLACK")]
-		CLUB,
-		[Description("RED")]
-		DIAMOND,
-		[Description("RED")]
-		HEART
+		[Description("BLACK")] SPADE,
+		[Description("BLACK")] CLUB,
+		[Description("RED")] DIAMOND,
+		[Description("RED")] HEART
 	}
 }

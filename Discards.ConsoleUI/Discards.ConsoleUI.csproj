@@ -1,23 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Content Include="bin\Debug\net5.0\appsettings.json" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="bin\Debug\net5.0\appsettings.json" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Discord.Net" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Discord.Net" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Discards.BlackRed.Service\Discards.BlackRed.Service.csproj" />
-    <ProjectReference Include="..\Discards.Shared\Discards.Shared.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Discards.BlackRed.Service\Discards.BlackRed.Service.csproj" />
+		<ProjectReference Include="..\Discards.Shared\Discards.Shared.csproj" />
+	</ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Discards.ConsoleUI.Services
+namespace Discards.Shared.Extensions
 {
 	public static class JsonExtensions
 	{

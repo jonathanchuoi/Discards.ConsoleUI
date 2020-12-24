@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Buffers;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Discards.BlackRed.Service.Models;
 using Discards.BlackRed.Service.Services.BlackRed;
+using Discards.Shared.Extensions;
 using Discord;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
@@ -21,7 +18,7 @@ namespace Discards.ConsoleUI.Services
 		public DiscordService()
 		{
 			_client = new DiscordSocketClient();
-			
+
 			//Hook into log event and write it out to the console
 			_client.Log += LogAsync;
 
@@ -34,7 +31,7 @@ namespace Discards.ConsoleUI.Services
 			//Create the configuration
 			var _builder = new ConfigurationBuilder()
 				.SetBasePath(AppContext.BaseDirectory)
-				.AddJsonFile(path: "appsettings.json");            
+				.AddJsonFile("appsettings.json");
 			_config = _builder.Build();
 
 			_deck = new Deck();
@@ -59,7 +56,7 @@ namespace Discards.ConsoleUI.Services
 
 		private Task ReadyAsync()
 		{
-			Console.WriteLine($"Connected as -> [] :)");
+			Console.WriteLine("Connected as -> [] :)");
 			return Task.CompletedTask;
 		}
 
@@ -89,7 +86,7 @@ namespace Discards.ConsoleUI.Services
 			else if (message.Content == ".Black")
 			{
 				var isCorrect = _deck.Guess(CardColor.BLACK);
-				var answer = isCorrect == true ? "correct" : "wrong";
+				var answer = isCorrect ? "correct" : "wrong";
 				var msg = $"{message.Author.Username} chose .Black and was {answer}";
 				await message.Send(answer);
 			}

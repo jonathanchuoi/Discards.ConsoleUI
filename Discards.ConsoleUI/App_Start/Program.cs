@@ -1,12 +1,11 @@
 ﻿using System;
-
 using Discards.ConsoleUI.Services;
 
 namespace Discards.ConsoleUI
 {
-	class Program
+	internal class Program
 	{
-			static void Main(string[] args)
+		private static void Main(string[] args)
 		{
 			try
 			{
@@ -24,7 +23,5 @@ namespace Discards.ConsoleUI
 				Console.ReadKey();
 			}
 		}
-
-
 	}
 }
