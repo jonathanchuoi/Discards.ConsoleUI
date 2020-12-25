@@ -5,9 +5,6 @@ namespace Discards.Shared.Extensions
 {
 	public static class DiscordExtensions
 	{
-		public static Task Send(this SocketMessage socketMessage, string message)
-		{
-			return socketMessage.Channel.SendMessageAsync(message);
-		}
+		public static Task Send(this SocketMessage socketMessage, string message) => socketMessage.Channel.SendMessageAsync(message);
 	}
 }

@@ -1,5 +1,9 @@
-﻿namespace Discards.BlackRed.Service.Models
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace Discards.Services.Services.Deck.Enumerations
 {
+	[JsonConverter(typeof(StringEnumConverter))] 
 	public enum CardKind
 	{
 		ACE = 1,

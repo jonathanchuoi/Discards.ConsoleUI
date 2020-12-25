@@ -13,10 +13,12 @@
 		<PackageReference Include="Discord.Net" Version="2.2.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Discards.BlackRed.Service\Discards.BlackRed.Service.csproj" />
+		<ProjectReference Include="..\Discards.Commands\Discards.Commands.csproj" />
+		<ProjectReference Include="..\Discards.Services\Discards.Services.csproj" />
 		<ProjectReference Include="..\Discards.Shared\Discards.Shared.csproj" />
 	</ItemGroup>
 

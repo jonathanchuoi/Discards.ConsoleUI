@@ -8,12 +8,11 @@ namespace Discards.Shared.Extensions
 		{
 			if (source == null) return "";
 
-			if (jsonSerializerSettings == null)
-				jsonSerializerSettings = new JsonSerializerSettings
-				{
-					ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-					Formatting = Formatting.Indented
-				};
+			jsonSerializerSettings ??= new JsonSerializerSettings
+			{
+				ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+				Formatting = Formatting.Indented
+			};
 
 			var sourceSerialized = JsonConvert.SerializeObject(source, jsonSerializerSettings);
 			return sourceSerialized;

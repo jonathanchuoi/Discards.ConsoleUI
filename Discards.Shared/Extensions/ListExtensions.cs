@@ -5,18 +5,15 @@ namespace Discards.Shared.Extensions
 {
 	public static class ListExtensions
 	{
-		private static readonly Random rng = new Random();
-
+		private static readonly Random _random = new Random();
 		public static void Shuffle<T>(this IList<T> list)
 		{
-			var n = list.Count;
-			while (n > 1)
+			for (var i = 0; i < list.Count; i++)
 			{
-				n--;
-				var k = rng.Next(n + 1);
+				var k = _random.Next(i + 1);
 				var value = list[k];
-				list[k] = list[n];
-				list[n] = value;
+				list[k] = list[i];
+				list[i] = value;
 			}
 		}
 
@@ -26,5 +23,6 @@ namespace Discards.Shared.Extensions
 			list.RemoveAt(index);
 			return r;
 		}
+
 	}
 }

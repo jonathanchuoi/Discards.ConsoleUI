@@ -20,14 +20,16 @@ namespace Discards.Shared.Extensions
 		public static T? MapEnum<T>(this string stringValue) where T : struct
 		{
 			var isSuccess = Enum.TryParse(stringValue, true, out T val);
-
 			if (isSuccess) return val;
 
 			var enumValues = Enum.GetValues(typeof(T));
 
-			foreach (var v in enumValues)
-				if (v is Enum e && string.Equals(e.GetDescription(), stringValue, StringComparison.OrdinalIgnoreCase))
+			foreach (var value in enumValues)
+			{
+				if (value is Enum e && string.Equals(e.GetDescription(), stringValue, StringComparison.OrdinalIgnoreCase))
 					return ConvertToEnum<T>(e.ToString());
+			}
+			
 
 			return null;
 		}
@@ -35,9 +37,7 @@ namespace Discards.Shared.Extensions
 
 		public static T? ConvertToEnum<T>(string src) where T : struct
 		{
-			if (Enum.TryParse(src, true, out T result)) return result;
-
-			return null;
+			return Enum.TryParse(src, true, out T result) ? (T?) result : null;
 		}
 
 		public static List<string> GetDataSourceTypes(this Enum value)
