@@ -7,13 +7,13 @@ namespace Discards.Services.Services.Deck.Enumerations
 	[JsonConverter(typeof(StringEnumConverter))] 
 	public enum CardSuit
 	{
-		[Description("BLACK")] 
+		[Description("♤")] 
 		SPADE,
-		[Description("BLACK")] 
+		[Description("♧")] 
 		CLUB,
-		[Description("RED")] 
+		[Description("♢")] 
 		DIAMOND,
-		[Description("RED")] 
+		[Description("♡")] 
 		HEART
 	}
 }

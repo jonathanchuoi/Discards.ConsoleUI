@@ -1,26 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Discards.Shared.Extensions
 {
 	public static class ListExtensions
 	{
-		private static readonly Random _random = new Random();
-		public static void Shuffle<T>(this IList<T> list)
+		public static List<T> Shuffle<T>(this IEnumerable<T> source) => source.OrderBy(q => Guid.NewGuid()).ToList();
+	
+		public static T Pop<T>(this List<T> source, int index = 0)
 		{
-			for (var i = 0; i < list.Count; i++)
-			{
-				var k = _random.Next(i + 1);
-				var value = list[k];
-				list[k] = list[i];
-				list[i] = value;
-			}
-		}
-
-		public static T Pop<T>(this List<T> list, int index = 0)
-		{
-			var r = list[index];
-			list.RemoveAt(index);
+			var r = source[index];
+			source.RemoveAt(index);
 			return r;
 		}
 
