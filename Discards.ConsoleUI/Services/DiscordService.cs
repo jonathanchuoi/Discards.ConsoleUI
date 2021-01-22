@@ -5,6 +5,8 @@ using Discards.Services.Services.BlackRed.Implementations;
 using Discards.Services.Services.BlackRed.Interfaces;
 using Discards.Services.Services.Deck.Implementations;
 using Discards.Services.Services.Deck.Interface;
+using Discards.Services.Services.User.Implementations;
+using Discards.Services.Services.User.Interfaces;
 
 using Discord;
 using Discord.Commands;
@@ -49,8 +51,8 @@ namespace Discards.ConsoleUI.Services
 
         private static Task LogAsync(LogMessage log)
         {
-            Console.WriteLine(log.ToString());
-            return Task.CompletedTask;
+	        Console.WriteLine(log.ToString());
+	        return Task.CompletedTask;
         }
 
         private static Task ReadyAsync()
@@ -66,6 +68,7 @@ namespace Discards.ConsoleUI.Services
 		        .AddSingleton<CommandService>()
 		        .AddSingleton<CommandHandler>()
 		        .AddSingleton<IDeckService, DeckService>()
+		        .AddSingleton<IUserService,UserService>()
 		        .AddTransient<IBlackRedService,BlackRedService>()
 		        .BuildServiceProvider();
 	}

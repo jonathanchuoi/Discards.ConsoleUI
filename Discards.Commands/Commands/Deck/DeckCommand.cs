@@ -1,11 +1,14 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+
 using Discards.Services.Services.Deck.Interface;
 using Discards.Shared.Extensions;
+
 using Discord.Commands;
 
 namespace Discards.Commands.Commands.Deck
 {
+	[Alias("Deck")]
 	public class DeckCommand : ModuleBase
 	{
 		private readonly IDeckService _deckService;
@@ -42,7 +45,6 @@ namespace Discards.Commands.Commands.Deck
 			await ReplyAsync(msg);
 		}
 
-		
 		[Command("Show")]
 		public async Task Show()
 		{
@@ -52,7 +54,6 @@ namespace Discards.Commands.Commands.Deck
 			await ReplyAsync(msg);
 		}
 
-				
 		[Command("Peek")]
 		public async Task Peek()
 		{
@@ -62,7 +63,7 @@ namespace Discards.Commands.Commands.Deck
 			await ReplyAsync(msg);
 		}
 
-		[Command("PeekBottom")]
+		[Command("Peek Bottom")]
 		public async Task PeekBottom()
 		{
 			var card =_deckService.Get().LastOrDefault();

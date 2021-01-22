@@ -52,21 +52,31 @@ namespace Discards.ConsoleUI.Services
 			await _commands.ExecuteAsync(context, argPos, _services); 
 		}
 
-		private static async Task CommandExecutedAsync(Optional<CommandInfo> command, ICommandContext context, IResult result)
+		private static async Task CommandExecutedAsync(Optional<CommandInfo> command, ICommandContext context,
+			IResult result)
 		{
 			if (!command.IsSpecified)
 			{
-				Console.WriteLine($"Command failed to execute for [] <-> []!");
+				Console.WriteLine($"Command [{context?.Message?.Content}] failed to execute for [{context?.User?.Username}] <-> [{result?.ErrorReason}]!");
 				return;
 			}
-                
+
 			if (result.IsSuccess)
 			{
-				Console.WriteLine($"Command [] executed for -> []");
+				Console.WriteLine($"Command [{context?.Message?.Content}] executed for -> [{context?.User?.Username}]");
 				return;
 			}
-                
-			await context.Channel.SendMessageAsync($"Sorry, ... something went wrong -> []!");
-		}        
+
+			if (!result.IsSuccess)
+			{
+				var msg = $"Command '{context?.Message?.Content}' failed for [{context?.User?.Username}] <-> [{result?.ErrorReason}]!";
+				if (context?.Channel != null) await context.Channel?.SendMessageAsync(msg);
+
+				Console.WriteLine(msg);
+				return;
+			}
+
+			await context.Channel.SendMessageAsync($"Sorry, ... something went wrong -> [{result?.ErrorReason}]!");
+		}
 	}
 }
